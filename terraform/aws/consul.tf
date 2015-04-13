@@ -11,6 +11,11 @@ resource "aws_instance" "server" {
     }
 
     provisioner "file" {
+       source = "consul.d"
+       destination = "/tmp"
+    }
+
+    provisioner "file" {
         source = "${path.module}/scripts/upstart.conf"
         destination = "/tmp/upstart.conf"
     }
